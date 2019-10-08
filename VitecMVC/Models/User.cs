@@ -1,17 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace VitecMVC.Models
 {
-    public class User :DbContext
+
+    public class User
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public int PhoneNumber { get; set; }
-        public string EMail { get; set; }
+        public int UserID { get; set; }
+        public string Firstname {get; set;}
+        public string Lastname { get; set; }
+        public int Phonenumber { get; set; }
+        public string Email { get; set; }
+        public string Adress { get; set; }
+
     }
 }
