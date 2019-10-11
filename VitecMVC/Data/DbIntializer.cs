@@ -15,18 +15,19 @@ namespace VitecMVC.Data
             {
                 return;
             }
-            var User = new User[]
-            {
+
+            else{
+            var User = new User[10];
                 new User
                 {
-                    Firstname="Bent",
-                    Lastname="Karlsen",
-                    Phonenumber=88888888,
-                    Email="Bentkarl@fuckme.com",
-                    Adress="Lærkevej 28",
-                    UserID=1
-                }
-
+                    Firstname = "Bent",
+                    Lastname = "Karlsen",
+                    Phonenumber = 88888888,
+                    Email = "Bentkarl@fuckme.com",
+                    Adress = "Lærkevej 28",
+                    UserID = 1
+                };
+                Context.Add(User);
             };
         }
     }

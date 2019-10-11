@@ -16,17 +16,17 @@ namespace VitecMVC
     {
         public static void Main(string[] args)
         {
-            var host =
-            CreateWebHostBuilder(args).Build();
-            using(var scope = host.Services.CreateScope())
+            var host = CreateWebHostBuilder(args).Build();
+            using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
                 try
                 {
+                    
                     var context = services.GetRequiredService<UserContext>();
                     DbIntializer.Initialize(context);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "an error occurred");

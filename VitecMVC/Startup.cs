@@ -12,11 +12,12 @@ using Microsoft.Extensions.DependencyInjection;
 using VitecMVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+
 namespace VitecMVC
 {
     public class Startup
     {
-        private string ConnectionString = "server=mysql11.unoeuro.com;port=3306;database=vitecprivat_se_db;uid=vitecprivat_se;password=JegKanLideKage;";
+        private readonly string DbContext = "server=mysql11.unoeuro.com;port=3306;database=vitecprivat_se_db;uid=vitecprivat_se;password=JegKanLideKage;";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -34,12 +35,12 @@ namespace VitecMVC
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<UserContext>(options =>
-            options.UseMySql(ConnectionString, Mysqloptions =>
+            services.AddDbContextPool<UserContext>(options =>
+            options.UseMySql(DbContext, Mysqloptions =>
             {
-                Mysqloptions.ServerVersion(new Version(5, 7, 17), ServerType.MySql);
+                Mysqloptions.ServerVersion(new Version(4, 9, 01), ServerType.MySql);
             }));
-        
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
